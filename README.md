@@ -14,7 +14,10 @@ This Git repo contains IAM policy documents, Python code, and CloudFormation tem
 
 ### CLI commands
 
-#### 01 Policies
+#### 01 Policies 
+
+The primary purpose of these custom policies is separating Administrator vs. Engineer roles and also limiting the instance types allowed for users so as to minimize costs.  Note the use of the `sagemaker:InstanceTypes` IAM condition key in the `SageMakerDataScienceEngineerPolicy` and `SageMakerDataScienceAdministratorPolicy` documents.
+
 ```
 aws iam create-policy --policy-name SageMakerComputePolicy --policy-document file://SageMakerComputePolicy.json
 aws iam create-policy --policy-name SageMakerStoragePolicy --policy-document file://SageMakerStoragePolicy.json
@@ -24,12 +27,18 @@ aws iam create-policy --policy-name SageMakerDataScienceAdministratorPolicy --po
 ```
 
 #### 02 Roles
+
+You need grant the `sts:AssumeRole` permission to SageMaker to run on-behalf of the user with these policies
+
 ```
 aws iam create-role --role-name SageMakerDataScienceEngineerRole --assume-role-policy-document file://SageMakerServiceRoleTrustPolicy.json
 aws iam create-role --role-name SageMakerDataScienceAdministratorRole --assume-role-policy-document file://SageMakerServiceRoleTrustPolicy.json
 ```
 
-#### 03 Attach Policies to Roles ... DataScienceEngineer, DataScienceAdministrator
+#### 03 Attach Policies to Rolea
+
+You need to attach the aformentioned custom policies to the roles.  Note that the AWS Account ID in the policy ARN should be replaced for your respective environment.
+
 ```
 aws iam attach-role-policy --role-name SageMakerDataScienceEngineerRole --policy-arn arn:aws:iam::645411899653:policy/SageMakerDataScienceEngineerPolicy
 aws iam attach-role-policy --role-name SageMakerDataScienceEngineerRole --policy-arn arn:aws:iam::645411899653:policy/SageMakerComputePolicy
