@@ -28,7 +28,7 @@ aws iam create-policy --policy-name SageMakerDataScienceAdministratorPolicy --po
 
 #### 02 Roles
 
-You need grant the `sts:AssumeRole` permission to SageMaker to run on-behalf of the user with these policies
+You must grant the `sts:AssumeRole` permission to SageMaker to run on-behalf of the user with these policies.
 
 ```
 aws iam create-role --role-name SageMakerDataScienceEngineerRole --assume-role-policy-document file://SageMakerServiceRoleTrustPolicy.json
@@ -37,7 +37,7 @@ aws iam create-role --role-name SageMakerDataScienceAdministratorRole --assume-r
 
 #### 03 Attach Policies to Rolea
 
-You need to attach the aformentioned custom policies to the roles.  Note that the AWS Account ID in the policy ARN should be replaced for your respective environment.
+You must attach the aformentioned custom policies to the roles.  Note that the AWS Account ID in the policy ARN must be replaced for your respective environment.
 
 ```
 aws iam attach-role-policy --role-name SageMakerDataScienceEngineerRole --policy-arn arn:aws:iam::645411899653:policy/SageMakerDataScienceEngineerPolicy
@@ -51,6 +51,9 @@ aws iam attach-role-policy --role-name SageMakerDataScienceAdministratorRole --p
 ```
 
 #### 04.Optional
+
+Attach additional policies as needed based on your scenario and use cases.
+
 ```
 aws iam attach-role-policy --role-name SageMakerDataScienceEngineerRole --policy-arn arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess
 aws iam attach-role-policy --role-name SageMakerDataScienceEngineerRole --policy-arn arn:aws:iam::aws:policy/AmazonSageMakerReadOnly
@@ -63,6 +66,9 @@ aws iam attach-role-policy --role-name SageMakerDataScienceEngineerRole --policy
 ```
 
 ##### SCRATCH attaching policy update
+
+There is a default IAM limit of 5 versions of a policy.  If you find yourself updating a policy frequently, you may need to update and set the latest as the default.
+
 ```
 aws iam create-policy-version  --policy-arn arn:aws:iam::645411899653:policy/SageMakerDataScienceEngineerPolicy --policy-document file://SageMakerDataScienceEngineerPolicy.json --set-as-default
 ```
