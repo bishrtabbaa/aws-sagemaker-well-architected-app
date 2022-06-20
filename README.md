@@ -28,16 +28,16 @@ aws iam create-policy --policy-name SageMakerDataScienceAdministratorPolicy --po
 
 #### 02 Roles
 
-You must grant the `sts:AssumeRole` permission to SageMaker to run on-behalf of the user with these policies.
+You MUST grant the `sts:AssumeRole` permission to SageMaker to run on-behalf of the user with these policies.
 
 ```
 aws iam create-role --role-name SageMakerDataScienceEngineerRole --assume-role-policy-document file://SageMakerServiceRoleTrustPolicy.json
 aws iam create-role --role-name SageMakerDataScienceAdministratorRole --assume-role-policy-document file://SageMakerServiceRoleTrustPolicy.json
 ```
 
-#### 03 Attach Policies to Rolea
+#### 03 Attach Policies to Roles
 
-You must attach the aformentioned custom policies to the roles.  Note that the AWS Account ID in the policy ARN must be replaced for your respective environment.
+You MUST attach the aformentioned custom policies to the roles.  Note that the AWS Account ID in the policy ARN MUST be replaced for your respective environment.
 
 ```
 aws iam attach-role-policy --role-name SageMakerDataScienceEngineerRole --policy-arn arn:aws:iam::645411899653:policy/SageMakerDataScienceEngineerPolicy
