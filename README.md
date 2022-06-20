@@ -1,10 +1,16 @@
-# aws-sagemaker-cost-optimization-app
+# aws-sagemaker-well-architected-app
 
 ## :brain: Amazon SageMaker Well-Architected App Overview
 
 [Amazon SageMaker](https://aws.amazon.com/sagemaker/) is a managed service for data science and machine learning (ML) workflows. You can use Amazon SageMaker to simplify the process of building, training, and deploying ML models.
 
-This Git repo contains IAM policy documents, Python code, and CloudFormation templates to help you optimize your SageMaker environment for security, cost, and performance.  It follows the prescriptive guidance found in the [AWS Machine Learning Well-Architected Lens] (https://aws.amazon.com/blogs/architecture/introducing-the-well-architected-framework-for-machine-learning/) and the [Secure ML Platform on AWS Whitepaper] (https://docs.aws.amazon.com/whitepapers/latest/build-secure-enterprise-ml-platform/build-secure-enterprise-ml-platform.html)
+This Git repo contains IAM policy documents, Python code, and CloudFormation templates to help you optimize your SageMaker environment for security, cost, and performance.  It follows the prescriptive guidance found in the following whitepapers and references below:
+
+### References
+* [AWS Machine Learning Well-Architected Lens] (https://aws.amazon.com/blogs/architecture/introducing-the-well-architected-framework-for-machine-learning/)
+* [Secure ML Platform on AWS] (https://docs.aws.amazon.com/whitepapers/latest/build-secure-enterprise-ml-platform/build-secure-enterprise-ml-platform.html)
+* [SageMaker Studio Security Workshop] (https://github.com/aws-samples/amazon-sagemaker-studio-secure-data-science-workshop)
+* [SageMaker DevOps Workshop] (https://sagemaker-workshop.com/security_for_sysops.html)
 
 ### CLI commands
 
@@ -48,4 +54,6 @@ aws iam attach-role-policy --role-name SageMakerDataScienceEngineerRole --policy
 ```
 
 ##### SCRATCH attaching policy update
+```
 aws iam create-policy-version  --policy-arn arn:aws:iam::645411899653:policy/SageMakerDataScienceEngineerPolicy --policy-document file://SageMakerDataScienceEngineerPolicy.json --set-as-default
+```
