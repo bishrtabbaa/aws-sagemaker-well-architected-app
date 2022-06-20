@@ -1,0 +1,15 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+    {
+        "Sid": "SageMakerReadAccess",
+        "Effect": "Allow",
+        "Action": [
+            "sagemaker:List*",
+            "sagemaker:Describe*",
+            "sagemaker:Get*"
+        ],
+        "Resource": "*"
+    }
+    ]
+}

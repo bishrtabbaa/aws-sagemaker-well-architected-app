@@ -1,0 +1,65 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": "iam:CreateServiceLinkedRole",
+            "Effect": "Allow",
+            "Resource": "arn:aws:iam::*:role/aws-service-role/sagemaker.application-autoscaling.amazonaws.com/AWSServiceRoleForApplicationAutoScaling_SageMakerEndpoint",
+            "Condition": {
+                "StringLike": {
+                    "iam:AWSServiceName": "sagemaker.application-autoscaling.amazonaws.com"
+                }
+            }
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:PassRole"
+            ],
+            "Resource": "arn:aws:iam::*:role/*AmazonSageMaker*",
+            "Condition": {
+                "StringEquals": {
+                    "iam:PassedToService": [
+                        "glue.amazonaws.com"
+                    ]
+                }
+            }
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:PassRole"
+            ],
+            "Resource": "arn:aws:iam::*:role/*",
+            "Condition": {
+                "StringEquals": {
+                    "iam:PassedToService": "sagemaker.amazonaws.com"
+                }
+            }
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "secretsmanager:DescribeSecret",
+                "secretsmanager:GetSecretValue",
+                "secretsmanager:CreateSecret"
+            ],
+            "Resource": [
+                "arn:aws:secretsmanager:*:*:secret:AmazonSageMaker-*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "secretsmanager:DescribeSecret",
+                "secretsmanager:GetSecretValue"
+            ],
+            "Resource": "*",
+            "Condition": {
+                "StringEquals": {
+                    "secretsmanager:ResourceTag/SageMaker": "true"
+                }
+            }
+        }
+    ]
+}

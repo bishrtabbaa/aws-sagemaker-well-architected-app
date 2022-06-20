@@ -1,0 +1,174 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowSageMakerAdministration",
+            "Effect": "Allow",
+            "Action": [
+                "sagemaker:CreateDomain",
+                "sagemaker:CreateUserProfile",
+                "sagemaker:DeleteDomain",
+                "sagemaker:DeleteUserProfile",
+                "sagemaker:UpdateDomain",
+                "sagemaker:UpdateUserProfile"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid" : "AllowSageMakerCreateAppLimitedInstanceTypes",
+            "Effect": "Allow",
+            "Action": "sagemaker:CreateApp",
+            "Resource": "*",
+            "Condition": {
+                "ForAllValues:StringLike": {
+                    "sagemaker:InstanceTypes": [ "default", "system", "ml.t3.medium", "ml.t3.large", "ml.t3.xlarge", "ml.m5.large", "ml.m5.xlarge", "ml.m5.2xlarge", "ml.c5.large", "ml.c5.xlarge", "ml.c5.2xlarge", "ml.r5.large", "ml.r5.xlarge", "ml.r5.2xlarge"]
+                }
+            }
+        },
+        {
+            "Sid" : "AllowSageMakerCreateNotebookLimitedInstanceTypes",
+            "Effect": "Allow",
+            "Action": "sagemaker:CreateNotebookInstance",
+            "Resource":"*",
+            "Condition": {
+                "ForAllValues:StringLike": {
+                    "sagemaker:InstanceTypes": [ "default", "system", "ml.t3.medium", "ml.t3.large", "ml.t3.xlarge", "ml.m5.large", "ml.m5.xlarge", "ml.m5.2xlarge", "ml.c5.large", "ml.c5.xlarge", "ml.c5.2xlarge", "ml.r5.large", "ml.r5.xlarge", "ml.r5.2xlarge"]
+                }
+            }
+        },
+        {
+            "Sid" : "AllowSageMakerCreateDeleteUpdateStartStop",
+            "Effect": "Allow",
+            "Action": [
+                "sagemaker:AddTags",
+                "sagemaker:CreateAutoMLJob",
+                "sagemaker:CreateEndpoint",
+                "sagemaker:CreateEndpointConfig",
+                "sagemaker:CreateFlowDefinition",
+                "sagemaker:CreateHyperParameterTuningJob",
+                "sagemaker:CreateImage",
+                "sagemaker:CreateImageVersion",
+                "sagemaker:CreateModel",
+                "sagemaker:CreateModelPackage",
+                "sagemaker:CreateModelPackageGroup",
+                "sagemaker:CreatePipeline",
+                "sagemaker:CreatePresignedDomainUrl",
+                "sagemaker:CreatePresignedNotebookInstanceUrl",
+                "sagemaker:CreateProcessingJob",
+                "sagemaker:CreateStudioLifecycleConfig",
+                "sagemaker:CreateTrainingJob",
+                "sagemaker:CreateTransformJob",
+                "sagemaker:CreateContext",
+                "sagemaker:CreateAction",
+                "sagemaker:CreateAssociation",
+                "sagemaker:CreateArtifact",
+                "sagemaker:AddAssociation",
+                "sagemaker:CreateExperiment",
+                "sagemaker:CreateTrial",
+                "sagemaker:CreateTrialComponent",
+                "sagemaker:AssociateTrialComponent",
+                "sagemaker:DeleteApp",
+                "sagemaker:DeleteEndpoint",
+                "sagemaker:DeleteEndpointConfig",
+                "sagemaker:DeleteFlowDefinition",
+                "sagemaker:DeleteModel",
+                "sagemaker:DeleteModelPackage",
+                "sagemaker:DeleteModelPackageGroup",
+                "sagemaker:DeleteNotebookInstance",
+                "sagemaker:DeletePipeline",
+                "sagemaker:DeleteTags",
+                "sagemaker:DeleteAssociation",
+                "sagemaker:DeleteTrial",
+                "sagemaker:DeleteTrialComponent",
+                "sagemaker:DeleteExperiment",
+                "sagemaker:DeleteContext",
+                "sagemaker:DeleteArtifact",
+                "sagemaker:DeleteAction",
+                "sagemaker:RetryPipelineExecution",
+                "sagemaker:SendPipelineExecutionStepFailure",
+                "sagemaker:SendPipelineExecutionStepSuccess",
+                "sagemaker:StartNotebookInstance",
+                "sagemaker:StartPipelineExecution",
+                "sagemaker:StopHyperParameterTuningJob",
+                "sagemaker:StopNotebookInstance",
+                "sagemaker:StopPipelineExecution",
+                "sagemaker:StopProcessingJob",
+                "sagemaker:StopTrainingJob",
+                "sagemaker:StopTransformJob",
+                "sagemaker:UpdateEndpoint",
+                "sagemaker:UpdateEndpointWeightsAndCapacities",
+                "sagemaker:UpdateModelPackage",
+                "sagemaker:UpdateNotebookInstance",
+                "sagemaker:UpdatePipeline",
+                "sagemaker:UpdatePipelineExecution",
+                "sagemaker:InvokeEndpoint"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid" : "AllowSageMakerReadOnlyListDescribe",
+            "Effect": "Allow",
+            "Action": [
+                "sagemaker:Describe*",
+                "sagemaker:List*",
+                "sagemaker:Get*"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid":"AllowKmsServiceCatalog",
+            "Effect": "Allow",
+            "Action": [
+                "iam:ListRoles",
+                "kms:DescribeKey",
+                "kms:ListAliases",
+                "lambda:ListFunctions",
+                "secretsmanager:ListSecrets",
+                "servicecatalog:Describe*",
+                "servicecatalog:List*",
+                "servicecatalog:ScanProvisionedProducts",
+                "servicecatalog:SearchProducts",
+                "servicecatalog:SearchProvisionedProducts",
+                "servicecatalog:ProvisionProduct",
+                "sns:ListTopics",
+                "tag:GetResources"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "servicecatalog:TerminateProvisionedProduct",
+                "servicecatalog:UpdateProvisionedProduct"
+            ],
+            "Resource": "*",
+            "Condition": {
+                "StringEquals": {
+                    "servicecatalog:userLevel": "self"
+                }
+            }
+        },
+        {
+            "Sid": "AllowSns",
+            "Effect": "Allow",
+            "Action": [
+                "sns:Subscribe",
+                "sns:CreateTopic",
+                "sns:Publish"
+            ],
+            "Resource": [
+                "arn:aws:sns:*:*:*SageMaker*",
+                "arn:aws:sns:*:*:*Sagemaker*",
+                "arn:aws:sns:*:*:*sagemaker*"
+            ]
+        },
+        {
+            "Sid" : "AllowLicenseManager",
+            "Effect": "Allow",
+            "Action": [
+                "license-manager:List*"
+            ],
+            "Resource": ["*"]
+        }
+    ]
+}

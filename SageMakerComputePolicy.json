@@ -1,0 +1,94 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid":"AllowASG",
+            "Effect": "Allow",
+            "Action": [
+                "application-autoscaling:DeleteScalingPolicy",
+                "application-autoscaling:DeleteScheduledAction",
+                "application-autoscaling:DeregisterScalableTarget",
+                "application-autoscaling:DescribeScalableTargets",
+                "application-autoscaling:DescribeScalingActivities",
+                "application-autoscaling:DescribeScalingPolicies",
+                "application-autoscaling:DescribeScheduledActions",
+                "application-autoscaling:PutScalingPolicy",
+                "application-autoscaling:PutScheduledAction",
+                "application-autoscaling:RegisterScalableTarget"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid":"AllowCloudWatch",
+            "Effect": "Allow",
+            "Action": [
+                "cloudformation:GetTemplateSummary",
+                "logs:CreateLogDelivery",
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:DeleteLogDelivery",
+                "logs:Describe*",
+                "logs:GetLogDelivery",
+                "logs:GetLogEvents",
+                "logs:ListLogDeliveries",
+                "logs:PutLogEvents",
+                "logs:PutResourcePolicy",
+                "logs:UpdateLogDelivery",
+                "cloudwatch:DeleteAlarms",
+                "cloudwatch:DescribeAlarms",
+                "cloudwatch:GetMetricData",
+                "cloudwatch:GetMetricStatistics",
+                "cloudwatch:ListMetrics",
+                "cloudwatch:PutMetricAlarm",
+                "cloudwatch:PutMetricData"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid":"AllowEC2",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:CreateNetworkInterface",
+                "ec2:CreateNetworkInterfacePermission",
+                "ec2:CreateVpcEndpoint",
+                "ec2:DeleteNetworkInterface",
+                "ec2:DeleteNetworkInterfacePermission",
+                "ec2:DescribeDhcpOptions",
+                "ec2:DescribeNetworkInterfaces",
+                "ec2:DescribeRouteTables",
+                "ec2:DescribeSecurityGroups",
+                "ec2:DescribeSubnets",
+                "ec2:DescribeVpcEndpoints",
+                "ec2:DescribeVpcs"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid":"AllowECR",
+            "Effect": "Allow",
+            "Action": [
+                "ecr:BatchCheckLayerAvailability",
+                "ecr:BatchGetImage",
+                "ecr:CreateRepository",
+                "ecr:Describe*",
+                "ecr:GetAuthorizationToken",
+                "ecr:GetDownloadUrlForLayer",
+                "ecr:StartImageScan"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid":"AllowLambda",
+            "Effect": "Allow",
+            "Action": [
+                "lambda:InvokeFunction"
+            ],
+            "Resource": [
+                "arn:aws:lambda:*:*:function:*SageMaker*",
+                "arn:aws:lambda:*:*:function:*sagemaker*",
+                "arn:aws:lambda:*:*:function:*Sagemaker*",
+                "arn:aws:lambda:*:*:function:*LabelingFunction*"
+            ]
+        }
+    ]
+}
