@@ -59,10 +59,10 @@ aws iam attach-role-policy --role-name SageMakerDataScienceEngineerRole --policy
 aws iam attach-role-policy --role-name SageMakerDataScienceEngineerRole --policy-arn arn:aws:iam::aws:policy/AmazonSageMakerReadOnly
 aws iam attach-role-policy --role-name SageMakerDataScienceEngineerRole --policy-arn arn:aws:iam::aws:policy/AWSServiceCatalogEndUserFullAccess
 aws iam attach-role-policy --role-name SageMakerDataScienceEngineerRole --policy-arn arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly
-aws iam attach-role-policy --role-name SageMakerDataScienceEngineerRole --policy-arn arn:aws:iam::aws:policy/AmazonS3FullAccess
-aws iam attach-role-policy --role-name SageMakerDataScienceEngineerRole --policy-arn arn:aws:iam::aws:policy/AmazonSageMakerReadOnly
-aws iam attach-role-policy --role-name SageMakerDataScienceEngineerRole --policy-arn arn:aws:iam::aws:policy/AWSServiceCatalogAdminFullAccess
-aws iam attach-role-policy --role-name SageMakerDataScienceEngineerRole --policy-arn arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryFullAccess
+aws iam attach-role-policy --role-name SageMakerDataScienceAdministratorRole --policy-arn arn:aws:iam::aws:policy/AmazonS3FullAccess
+aws iam attach-role-policy --role-name SageMakerDataScienceAdministratorRole --policy-arn arn:aws:iam::aws:policy/AmazonSageMakerReadOnly
+aws iam attach-role-policy --role-name SageMakerDataScienceAdministratorRole --policy-arn arn:aws:iam::aws:policy/AWSServiceCatalogAdminFullAccess
+aws iam attach-role-policy --role-name SageMakerDataScienceAdministratorRole --policy-arn arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryFullAccess
 ```
 
 ##### SCRATCH attaching policy update
