@@ -65,7 +65,7 @@ aws iam attach-role-policy --role-name SageMakerDataScienceAdministratorRole --p
 aws iam attach-role-policy --role-name SageMakerDataScienceAdministratorRole --policy-arn arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryFullAccess
 ```
 
-##### SCRATCH attaching policy update
+#### 010.SCRATCH attaching policy update
 
 There is a default IAM limit of 5 versions of a policy.  If you find yourself updating a policy frequently, you may need to update and set the latest as the default.
 
