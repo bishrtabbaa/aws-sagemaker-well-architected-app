@@ -1,0 +1,53 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "sagemaker:CreateTrainingJob",
+                "sagemaker:CreateTransformJob",
+                "sagemaker:CreateProcessingJob",
+                "sagemaker:CreateAutoMLJob",
+                "sagemaker:CreateHyperParameterTuningJob",
+                "sagemaker:StopTrainingJob",
+                "sagemaker:StopProcessingJob",
+                "sagemaker:StopAutoMLJob",
+                "sagemaker:StopHyperParameterTuningJob",
+                "sagemaker:DescribeTrainingJob",
+                "sagemaker:DescribeTransformJob",
+                "sagemaker:DescribeProcessingJob",
+                "sagemaker:DescribeAutoMLJob",
+                "sagemaker:DescribeHyperParameterTuningJob",
+                "sagemaker:UpdateTrainingJob",
+                "sagemaker:BatchGetMetrics"
+            ],
+            "Resource": "arn:aws:sagemaker:*:*:*/*"
+        },
+       { 
+            "Effect": "Allow",
+            "Action": [
+                "sagemaker:Search",
+                "sagemaker:ListTrainingJobs",
+                "sagemaker:ListTransformJobs",
+                "sagemaker:ListProcessingJobs",
+                "sagemaker:ListAutoMLJobs",
+                "sagemaker:ListCandidatesForAutoMLJob",
+                "sagemaker:ListHyperParameterTuningJobs",
+                "sagemaker:ListTrainingJobsForHyperParameterTuningJob"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "iam:PassRole",
+            "Resource": [
+                "arn:aws:iam::1111111111:role/service-role/SageMaker-MySailpointDataScientistRole"
+            ],
+            "Condition": {
+                "StringEquals": {
+                    "iam:PassedToService": "sagemaker.amazonaws.com"
+                }
+            }
+        }
+    ]
+}
